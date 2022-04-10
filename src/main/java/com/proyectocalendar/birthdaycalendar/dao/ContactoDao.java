@@ -7,6 +7,12 @@ import java.util.List;
 public interface ContactoDao {
 
     List<Contacto> getContactos();
-    List<Contacto> getContactosPorUsuario(Long usuarioId);
+
+    List<Contacto> getContactosPorUsuario(Long contactoId);
+
     void addContacto(Contacto contacto);
+
+    void eliminarContacto(Long contactoId);
+
+    List<Contacto> getContacto(Long contactoId);
 }

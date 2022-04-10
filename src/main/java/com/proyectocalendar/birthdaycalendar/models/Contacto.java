@@ -1,7 +1,9 @@
 package com.proyectocalendar.birthdaycalendar.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity // Para decir que es una entidad, hace referencia a la BBDD, Para que Hibernate sepa que esa Clase es una Tabla
 @Table(name = "contacto")
@@ -21,8 +23,9 @@ public class Contacto {
     @Column(name = "apellido")
     private String apellido;
 
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "fechanac")
-    private Date fechanac;
+    private LocalDate fechanac;
 
     @Column(name = "email")
     private String email;
@@ -57,11 +60,11 @@ public class Contacto {
         this.apellido = apellido;
     }
 
-    public Date getFechanac() {
+    public LocalDate getFechanac() {
         return fechanac;
     }
 
-    public void setFechanac(Date fechanac) {
+    public void setFechanac(LocalDate fechanac) {
         this.fechanac = fechanac;
     }
 

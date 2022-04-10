@@ -36,10 +36,16 @@ public class ContactoDaoImp implements ContactoDao {
         entityManager.merge(contacto);
     }
 
-/*
     @Override
-    public void eliminar(Long id) {
-        Empleado empleado = entityManager.find(Empleado.class, id);
-        entityManager.remove(empleado);
-    }*/
+    public void eliminarContacto(Long contactoId) {
+        Contacto contacto = entityManager.find(Contacto.class, contactoId);
+        entityManager.remove(contacto);
+    }
+
+    @Override
+    public List<Contacto> getContacto(Long contactoId) {
+        Query query = entityManager.createQuery("SELECT c FROM Contacto c WHERE c.contactoId =:contactoid");
+        query.setParameter("contactoid", contactoId);
+        return query.getResultList();
+    }
 }

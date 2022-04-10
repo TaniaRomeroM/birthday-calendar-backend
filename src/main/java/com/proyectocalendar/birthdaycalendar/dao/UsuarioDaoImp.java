@@ -30,6 +30,6 @@ public class UsuarioDaoImp implements UsuarioDao {
 
     @Override
     public void registrarUsuario(Usuario usuario) {
-        entityManager.merge(usuario);
+        entityManager.persist(usuario);
     }
 }

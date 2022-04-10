@@ -33,8 +33,13 @@ public class ContactoController {
         return contacto;
     }
 
-    /*@GetMapping(value = "contacto/{id}")
-    public List<Contacto> getContactoPorId(@PathVariable("id") Long usuarioId) {
-        //return contactoDao.getContactosPorUsuario(usuarioId);
-    }*/
+    @DeleteMapping(value = "contactos/eliminar/{id}")
+    public void eliminarContacto(@PathVariable("id") Long contactoId) {
+        contactoDao.eliminarContacto(contactoId);
+    }
+
+    @GetMapping(value = "contacto/{id}")
+    public List<Contacto> getContacto(@PathVariable("id") Long contactoId) {
+        return contactoDao.getContacto(contactoId);
+    }
 }

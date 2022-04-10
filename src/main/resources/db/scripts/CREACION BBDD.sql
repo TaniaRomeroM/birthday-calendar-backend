@@ -88,3 +88,5 @@ INSERT INTO calendar.contacto VALUES (NULL, 1, 'Inma', 'Perez', '2001/04/02','ma
 INSERT INTO calendar.contacto VALUES (NULL, 1, 'Angeles', 'Sanz', '2001/07/28','estela@outlook.com');
 INSERT INTO calendar.contacto VALUES (NULL, 1, 'Carlota', 'Garcia', '1996/06/24','carmela@outlook.com');
 INSERT INTO calendar.contacto VALUES (NULL, 1, 'Juan', 'Sanchez', '1994/10/16','juan@outlook.com');
+
+INSERT INTO calendar.fiesta VALUES (NULL, 6, 1, '1994/10/16', 'Disfraces');
