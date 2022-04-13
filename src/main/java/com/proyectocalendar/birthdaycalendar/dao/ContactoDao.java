@@ -8,7 +8,7 @@ public interface ContactoDao {
 
     List<Contacto> getContactos();
 
-    List<Contacto> getContactosPorUsuario(Long contactoId);
+    List<Contacto> getContactosPorUsuario(Long usuarioId);
 
     void addContacto(Contacto contacto);
 

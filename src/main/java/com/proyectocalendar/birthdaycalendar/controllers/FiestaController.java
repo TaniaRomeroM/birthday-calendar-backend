@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin({"*"}) // ¿¿¿????
+@CrossOrigin({"*"})
 public class FiestaController {
 
     @Autowired // LLama a FiestaDao, Hace directamente una inyeccion de dependencias
