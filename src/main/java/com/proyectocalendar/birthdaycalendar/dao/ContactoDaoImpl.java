@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository // Hace referencia a la conexion con la BBDD
 @Transactional // Min 2:05:44 Da funcionalidad a la clase para poder armar las consultas de SQL a la BBDD, Permite prescindir de crear la transaccion, hacer el commit, el begin, el rollback ...
-public class ContactoDaoImp implements ContactoDao {
+public class ContactoDaoImpl implements ContactoDao {
 
     @PersistenceContext
     private EntityManager entityManager; // Sirve para hacer la conexion con la BBDD
@@ -32,20 +32,22 @@ public class ContactoDaoImp implements ContactoDao {
     }
 
     @Override
-    public void addContacto(Contacto contacto) {
-        entityManager.merge(contacto);
-    }
-
-    @Override
-    public void eliminarContacto(Long contactoId) {
-        Contacto contacto = entityManager.find(Contacto.class, contactoId);
-        entityManager.remove(contacto);
-    }
-
-    @Override
     public List<Contacto> getContacto(Long contactoId) {
         Query query = entityManager.createQuery("SELECT c FROM Contacto c WHERE c.contactoId =:contactoid");
         query.setParameter("contactoid", contactoId);
         return query.getResultList();
     }
+
+    @Override
+    public void addContacto(Contacto contacto) {
+        entityManager.merge(contacto);
+    }
+
+    @Override
+    public Contacto eliminarContacto(Long contactoId) {
+        Contacto contacto = entityManager.find(Contacto.class, contactoId);
+        entityManager.remove(contacto);
+        return contacto;
+    }
+
 }

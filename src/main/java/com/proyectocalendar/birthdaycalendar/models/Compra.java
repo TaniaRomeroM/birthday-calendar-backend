@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "fiestacompra")
-public class Compras {
+public class Compra {
 
     @Id // Para mapear la clave primaria
     @Column(name = "fcompra_id")

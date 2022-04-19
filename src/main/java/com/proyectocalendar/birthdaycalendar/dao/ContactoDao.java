@@ -10,9 +10,10 @@ public interface ContactoDao {
 
     List<Contacto> getContactosPorUsuario(Long usuarioId);
 
+    List<Contacto> getContacto(Long contactoId);
+
     void addContacto(Contacto contacto);
 
-    void eliminarContacto(Long contactoId);
+    Contacto eliminarContacto(Long contactoId);
 
-    List<Contacto> getContacto(Long contactoId);
 }

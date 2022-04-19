@@ -25,7 +25,11 @@ public class ContactoController {
         return contactoDao.getContactosPorUsuario(usuarioId);
     }
 
-    //@RequestMapping(value = "contactos/add", method = RequestMethod.POST)
+    @GetMapping(value = "contacto/{id}")
+    public List<Contacto> getContacto(@PathVariable("id") Long contactoId) {
+        return contactoDao.getContacto(contactoId);
+    }
+
     @PostMapping(value = "contactos/add")
     public Contacto addContacto (@RequestBody Contacto contacto) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
         //contacto.setUsuarioId(1);
@@ -34,12 +38,9 @@ public class ContactoController {
     }
 
     @DeleteMapping(value = "contactos/eliminar/{id}")
-    public void eliminarContacto(@PathVariable("id") Long contactoId) {
-        contactoDao.eliminarContacto(contactoId);
+    public Contacto eliminarContacto(@PathVariable("id") Long contactoId) {
+        Contacto contacto = contactoDao.eliminarContacto(contactoId);
+        return contacto;
     }
 
-    @GetMapping(value = "contacto/{id}")
-    public List<Contacto> getContacto(@PathVariable("id") Long contactoId) {
-        return contactoDao.getContacto(contactoId);
-    }
 }

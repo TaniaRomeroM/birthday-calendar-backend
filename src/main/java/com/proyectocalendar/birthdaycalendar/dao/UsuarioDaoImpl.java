@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository // Hace referencia a la conexion con la BBDD
 @Transactional // Min 2:05:44 Da funcionalidad a la clase para poder armar las consultas de SQL a la BBDD, Permite prescindir de crear la transaccion, hacer el commit, el begin, el rollback ...
-public class UsuarioDaoImp implements UsuarioDao {
+public class UsuarioDaoImpl implements UsuarioDao {
 
     @PersistenceContext
     private EntityManager entityManager; // Sirve para hacer la conexion con la BBDD

@@ -19,6 +19,11 @@ public class FiestaController {
         return fiestaDao.getFiestasPorUsuario(usuarioId);
     }
 
+    @GetMapping(value = "fiesta/{id}")
+    public List<Fiesta> getFiesta(@PathVariable("id") Long fiestaId) {
+        return fiestaDao.getFiesta(fiestaId);
+    }
+
     @PostMapping(value = "fiestas/add")
     public Fiesta addFiesta (@RequestBody Fiesta fiesta) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
         //fiesta.setUsuarioId(1);
@@ -26,9 +31,10 @@ public class FiestaController {
         return fiesta;
     }
 
-    @GetMapping(value = "fiesta/{id}")
-    public List<Fiesta> getFiesta(@PathVariable("id") Long fiestaId) {
-        return fiestaDao.getFiesta(fiestaId);
+    @DeleteMapping(value = "fiestas/eliminar/{id}")
+    public Fiesta eliminarFiesta(@PathVariable("id") Long fiestaId) {
+        Fiesta fiesta = fiestaDao.eliminarFiesta(fiestaId);
+        return fiesta;
     }
 
 }

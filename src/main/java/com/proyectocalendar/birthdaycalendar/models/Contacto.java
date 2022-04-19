@@ -75,4 +75,16 @@ public class Contacto {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "Contacto{" +
+                "contactoId=" + contactoId +
+                ", usuarioId=" + usuarioId +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", fechanac=" + fechanac +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

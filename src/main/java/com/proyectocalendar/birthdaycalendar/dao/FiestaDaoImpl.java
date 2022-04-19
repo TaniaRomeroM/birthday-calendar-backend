@@ -24,14 +24,21 @@ public class FiestaDaoImpl implements FiestaDao {
     }
 
     @Override
+    public List<Fiesta> getFiesta(Long fiestaId) {
+        Query query = entityManager.createQuery("SELECT f FROM Fiesta f WHERE f.fiestaId =:fiestaid");
+        query.setParameter("fiestaid", fiestaId);
+        return query.getResultList();
+    }
+
+    @Override
     public void addFiesta(Fiesta fiesta) {
         entityManager.merge(fiesta);
     }
 
     @Override
-    public List<Fiesta> getFiesta(Long fiestaId) {
-        Query query = entityManager.createQuery("SELECT f FROM Fiesta f WHERE f.fiestaId =:fiestaid");
-        query.setParameter("fiestaid", fiestaId);
-        return query.getResultList();
+    public Fiesta eliminarFiesta(Long fiestaId) {
+        Fiesta fiesta = entityManager.find(Fiesta.class, fiestaId);
+        entityManager.remove(fiesta);
+        return fiesta;
     }
 }
