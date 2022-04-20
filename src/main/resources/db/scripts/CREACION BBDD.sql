@@ -7,7 +7,7 @@ apellido VARCHAR(40) NULL,
 fechanac DATE NOT NULL,
 email VARCHAR(40) NOT NULL,
 nombreusuario VARCHAR(40) NOT NULL, /* HACER UNICA */ /**//***//****/
-password VARCHAR(40) NOT NULL,
+password VARCHAR(255) NOT NULL,
 PRIMARY KEY (usuario_id)
 ) engine=innodb;
 

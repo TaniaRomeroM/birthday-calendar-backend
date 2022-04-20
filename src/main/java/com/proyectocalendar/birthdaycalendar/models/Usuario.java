@@ -1,5 +1,7 @@
 package com.proyectocalendar.birthdaycalendar.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class Usuario {
     @Column(name = "apellido")
     private String apellido;
 
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "fechanac")
     private Date fechanac;
 
