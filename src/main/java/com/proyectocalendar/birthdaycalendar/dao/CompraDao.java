@@ -1,15 +1,15 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
-import com.proyectocalendar.birthdaycalendar.models.Compra;
+import com.proyectocalendar.birthdaycalendar.dto.CompraDTO;
 
 import java.util.List;
 
 public interface CompraDao {
 
-    List<Compra> getComprasPorFiesta(Long fiestaId);
+    List<CompraDTO> getComprasPorFiesta(Long fiestaId);
 
-    void addCompra(Compra compra);
+    CompraDTO addCompra(CompraDTO compraDTO);
 
-    Compra eliminarCompra(Long compraId);
+    CompraDTO eliminarCompra(Long compraId);
 
 }

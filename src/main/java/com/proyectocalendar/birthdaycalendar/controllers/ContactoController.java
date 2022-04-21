@@ -1,8 +1,10 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dao.ContactoDao;
-import com.proyectocalendar.birthdaycalendar.models.Contacto;
+import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,33 +16,30 @@ public class ContactoController {
     @Autowired // LLama al ContactoDao, Hace directamente una inyeccion de dependencias - min 2:20:00
     private ContactoDao contactoDao;
 
-
     @GetMapping(value = "contactos")
-    public List<Contacto> getContactos() {
-        return contactoDao.getContactos();
+    public ResponseEntity<List<ContactoDTO>> getContactos() {
+        return new ResponseEntity<List<ContactoDTO>>(contactoDao.getContactos(), HttpStatus.OK);
     }
 
     @GetMapping(value = "contactos/{id}")
-    public List<Contacto> getContactosPorUsuario(@PathVariable("id") Long usuarioId) {
-        return contactoDao.getContactosPorUsuario(usuarioId);
+    public ResponseEntity<List<ContactoDTO>> getContactosPorUsuario(@PathVariable("id") Long usuarioId) {
+        return new ResponseEntity<List<ContactoDTO>>(contactoDao.getContactosPorUsuario(usuarioId), HttpStatus.OK);
     }
 
     @GetMapping(value = "contacto/{id}")
-    public List<Contacto> getContacto(@PathVariable("id") Long contactoId) {
-        return contactoDao.getContacto(contactoId);
+    public ResponseEntity<List<ContactoDTO>> getContacto(@PathVariable("id") Long contactoId) {
+        return new ResponseEntity<List<ContactoDTO>>(contactoDao.getContacto(contactoId), HttpStatus.OK);
     }
 
     @PostMapping(value = "contactos/add")
-    public Contacto addContacto (@RequestBody Contacto contacto) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
-        //contacto.setUsuarioId(1);
-        contactoDao.addContacto(contacto);
-        return contacto;
+    public ResponseEntity<ContactoDTO> addContacto (@RequestBody ContactoDTO contactoDTO) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
+        //contactoDao.addContacto(contacto);
+        return new ResponseEntity<ContactoDTO>(contactoDao.addContacto(contactoDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "contactos/eliminar/{id}")
-    public Contacto eliminarContacto(@PathVariable("id") Long contactoId) {
-        Contacto contacto = contactoDao.eliminarContacto(contactoId);
-        return contacto;
+    public ResponseEntity<ContactoDTO> eliminarContacto(@PathVariable("id") Long contactoId) {
+        //ContactoDTO contactoDTO = contactoDao.eliminarContacto(contactoId);
+        return new ResponseEntity<ContactoDTO>(contactoDao.eliminarContacto(contactoId), HttpStatus.OK);
     }
-
 }

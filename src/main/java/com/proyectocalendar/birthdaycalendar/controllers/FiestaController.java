@@ -1,8 +1,10 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dao.FiestaDao;
-import com.proyectocalendar.birthdaycalendar.models.Fiesta;
+import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,26 +17,27 @@ public class FiestaController {
     private FiestaDao fiestaDao;
 
     @GetMapping(value = "fiestas/{id}")
-    public List<Fiesta> getFiestasPorUsuario(@PathVariable("id") Long usuarioId) {
-        return fiestaDao.getFiestasPorUsuario(usuarioId);
+    public ResponseEntity<List<FiestaDTO>> getFiestasPorUsuario(@PathVariable("id") Long usuarioId) {
+        return new ResponseEntity<List<FiestaDTO>>(fiestaDao.getFiestasPorUsuario(usuarioId), HttpStatus.OK);
     }
 
     @GetMapping(value = "fiesta/{id}")
-    public List<Fiesta> getFiesta(@PathVariable("id") Long fiestaId) {
-        return fiestaDao.getFiesta(fiestaId);
+    public ResponseEntity<List<FiestaDTO>> getFiesta(@PathVariable("id") Long fiestaId) {
+        return new ResponseEntity<List<FiestaDTO>>(fiestaDao.getFiesta(fiestaId), HttpStatus.OK);
     }
 
     @PostMapping(value = "fiestas/add")
-    public Fiesta addFiesta (@RequestBody Fiesta fiesta) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
+    public ResponseEntity<FiestaDTO> addFiesta (@RequestBody FiestaDTO fiestaDTO) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
         //fiesta.setUsuarioId(1);
-        fiestaDao.addFiesta(fiesta);
-        return fiesta;
+        /*fiestaDao.addFiesta(fiesta);
+        return fiesta;*/
+        return new ResponseEntity<FiestaDTO>(fiestaDao.addFiesta(fiestaDTO), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "fiestas/eliminar/{id}")
-    public Fiesta eliminarFiesta(@PathVariable("id") Long fiestaId) {
-        Fiesta fiesta = fiestaDao.eliminarFiesta(fiestaId);
-        return fiesta;
+    public ResponseEntity<FiestaDTO> eliminarFiesta(@PathVariable("id") Long fiestaId) {
+        /*Fiesta fiesta = fiestaDao.eliminarFiesta(fiestaId);
+        return fiesta;*/
+        return new ResponseEntity<FiestaDTO>(fiestaDao.eliminarFiesta(fiestaId), HttpStatus.OK);
     }
-
 }

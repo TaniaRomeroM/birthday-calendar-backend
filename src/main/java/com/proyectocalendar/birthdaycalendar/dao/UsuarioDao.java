@@ -1,16 +1,16 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
-import com.proyectocalendar.birthdaycalendar.models.Usuario;
+import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 
 import java.util.List;
 
 public interface UsuarioDao {
 
-    List<Usuario> getUsuarios();
+    List<UsuarioDTO> getUsuarios();
 
-    void registrarUsuario(Usuario usuario);
+    UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 
-    boolean verificarCredenciales(Usuario usuario);
+    boolean verificarCredenciales(UsuarioDTO usuarioDTO);
 
-    Usuario eliminarUsuario(Long usuarioId);
+    UsuarioDTO eliminarUsuario(Long usuarioId);
 }

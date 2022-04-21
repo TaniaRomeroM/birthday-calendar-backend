@@ -1,8 +1,10 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dao.CompraDao;
-import com.proyectocalendar.birthdaycalendar.models.Compra;
+import com.proyectocalendar.birthdaycalendar.dto.CompraDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,21 +17,22 @@ public class CompraController {
     private CompraDao compraDao;
 
     @GetMapping(value = "compras/{id}")
-    public List<Compra> getComprasPorFiesta(@PathVariable("id") Long fiestaId) {
-        return compraDao.getComprasPorFiesta(fiestaId);
+    public ResponseEntity<List<CompraDTO>> getComprasPorFiesta(@PathVariable("id") Long fiestaId) {
+        return new ResponseEntity<List<CompraDTO>>(compraDao.getComprasPorFiesta(fiestaId), HttpStatus.OK);
     }
 
     @PostMapping(value = "compras/add")
-    public Compra addCompra (@RequestBody Compra compra) {
+    public ResponseEntity<CompraDTO> addCompra (@RequestBody CompraDTO compraDTO) {
         //fiesta.setUsuarioId(1);
-        compraDao.addCompra(compra);
-        return compra;
+        /*compraDao.(compra);
+        return compra;*/
+        return new ResponseEntity<CompraDTO>(compraDao.addCompra(compraDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "compras/eliminar/{id}")
-    public Compra eliminarCompra(@PathVariable("id") Long compraId) {
-        Compra compra = compraDao.eliminarCompra(compraId);
-        return compra;
+    public ResponseEntity<CompraDTO> eliminarCompra(@PathVariable("id") Long compraId) {
+        /*Compra compra = compraDao.eliminarCompra(compraId);
+        return compra;*/
+        return new ResponseEntity<CompraDTO>(compraDao.eliminarCompra(compraId), HttpStatus.OK);
     }
-
 }

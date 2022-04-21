@@ -1,16 +1,16 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
-import com.proyectocalendar.birthdaycalendar.models.Fiesta;
+import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 
 import java.util.List;
 
 public interface FiestaDao {
 
-    List<Fiesta> getFiestasPorUsuario(Long fiestaId);
+    List<FiestaDTO> getFiestasPorUsuario(Long fiestaId);
 
-    List<Fiesta> getFiesta(Long fiestaId);
+    List<FiestaDTO> getFiesta(Long fiestaId);
 
-    void addFiesta(Fiesta fiesta);
+    FiestaDTO addFiesta(FiestaDTO fiestaDTO);
 
-    Fiesta eliminarFiesta(Long fiestaId);
+    FiestaDTO eliminarFiesta(Long fiestaId);
 }

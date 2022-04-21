@@ -1,7 +1,7 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dao.UsuarioDao;
-import com.proyectocalendar.birthdaycalendar.models.Usuario;
+import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +14,8 @@ public class AuthController {
     private UsuarioDao usuarioDao;
 
     @PostMapping(value = "login")
-    public String verificarCredenciales(@RequestBody Usuario usuario) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
-        if (usuarioDao.verificarCredenciales(usuario)) {
+    public String verificarCredenciales(@RequestBody UsuarioDTO usuarioDTO) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
+        if (usuarioDao.verificarCredenciales(usuarioDTO)) {
             return "OK";
         } else {
             return "FALSE";

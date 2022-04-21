@@ -1,19 +1,20 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
-import com.proyectocalendar.birthdaycalendar.models.Contacto;
+import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 
 import java.util.List;
 
 public interface ContactoDao {
 
-    List<Contacto> getContactos();
+    List<ContactoDTO> getContactos();
 
-    List<Contacto> getContactosPorUsuario(Long usuarioId);
+    List<ContactoDTO> getContactosPorUsuario(Long usuarioId);
 
-    List<Contacto> getContacto(Long contactoId);
+    List<ContactoDTO> getContacto(Long contactoId);
 
-    void addContacto(Contacto contacto);
+    //void addContacto(Contacto contacto);
+    ContactoDTO addContacto(ContactoDTO contactoDTO);
 
-    Contacto eliminarContacto(Long contactoId);
+    ContactoDTO eliminarContacto(Long contactoId);
 
 }
