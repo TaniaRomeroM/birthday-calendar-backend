@@ -1,5 +1,6 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
+import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.List;
 public interface FiestaDao {
 
     List<FiestaDTO> getFiestasPorUsuario(Long fiestaId);
+
+    List<FiestaDTO> getFiestasPorUsuario(String nombreUsuario);
 
     List<FiestaDTO> getFiesta(Long fiestaId);
 

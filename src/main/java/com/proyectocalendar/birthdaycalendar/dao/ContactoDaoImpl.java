@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository // Hace referencia a la conexion con la BBDD
-@Transactional // Min 2:05:44 Da funcionalidad a la clase para poder armar las consultas de SQL a la BBDD, Permite prescindir de crear la transaccion, hacer el commit, el begin, el rollback ...
+@Transactional // Mantiene coherencia si hay varios accesos a bd. Si uno falla, se hace rollback y se queda como estaba
 public class ContactoDaoImpl implements ContactoDao {
 
     @PersistenceContext
@@ -35,6 +35,15 @@ public class ContactoDaoImpl implements ContactoDao {
         Query query = entityManager.createQuery("SELECT c FROM Contacto c WHERE c.usuarioId =:usuarioid"); // Nombre de la clase no de la tabla
         //Query query = entityManager.createNativeQuery("SELECT * FROM calendar.contacto WHERE usuario_id =:usuarioid");
         query.setParameter("usuarioid", usuarioId);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ContactoDTO> getContactosPorUsuario(String nombreUsuario) {
+        Query query = entityManager.createQuery("SELECT c FROM Contacto c INNER JOIN Usuario u ON c.usuarioId = u.usuarioId" +
+                " WHERE u.nombreUsuario =:nombreUsuario"); // Nombre de la clase no de la tabla
+        //Query query = entityManager.createNativeQuery("SELECT * FROM calendar.contacto WHERE usuario_id =:usuarioid");
+        query.setParameter("nombreUsuario", nombreUsuario);
         return query.getResultList();
     }
 

@@ -19,7 +19,7 @@ apellido VARCHAR(40) NULL,
 fechanac DATE NOT NULL,
 email VARCHAR(40) NULL,
 PRIMARY KEY (contacto_id),
-CONSTRAINT contacto_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
+CONSTRAINT contacto_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) engine=innodb;
 
 CREATE TABLE IF NOT EXISTS calendar.fiesta (
@@ -30,7 +30,7 @@ fechafiesta DATE NULL,
 tipo VARCHAR(40) NULL,
 PRIMARY KEY (fiesta_id),
 CONSTRAINT fiesta_contactoFK FOREIGN KEY (contacto_id) REFERENCES contacto (contacto_id) ON DELETE CASCADE,
-CONSTRAINT fiesta_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
+CONSTRAINT fiesta_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) engine=innodb;
 
 CREATE TABLE IF NOT EXISTS calendar.fiestainvitado (
@@ -55,7 +55,7 @@ usuario_id BIGINT NOT NULL, /*Clave Ajena*/
 nombre VARCHAR(40) NOT NULL,
 descripcion VARCHAR(255) NOT NULL,
 PRIMARY KEY (notificacion_id),
-CONSTRAINT notificacion_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
+CONSTRAINT notificacion_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) engine=innodb;
 
 CREATE TABLE IF NOT EXISTS calendar.sugerencia (
@@ -64,8 +64,29 @@ usuario_id BIGINT NOT NULL, /*Clave Ajena*/
 nombre VARCHAR(40) NOT NULL,
 descripcion VARCHAR(255) NOT NULL,
 PRIMARY KEY (sugerencia_id),
-CONSTRAINT sugerencia_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id)
+CONSTRAINT sugerencia_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) engine=innodb;
+
+
+/*
+CREATE TABLE IF NOT EXISTS calendar.roles (
+id BIGINT NOT NULL AUTO_INCREMENT,
+rol_nombre VARCHAR(40) NOT NULL,
+PRIMARY KEY (id)
+) engine=INNODB;
+
+CREATE TABLE IF NOT EXISTS calendar.usuario_rol (
+rol_id BIGINT NOT NULL,
+usuario_id BIGINT NOT NULL,
+CONSTRAINT usuariorol_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
+CONSTRAINT usuariorol_rolesFK FOREIGN KEY (rol_id) REFERENCES roles (id)
+) engine=INNODB;
+
+INSERT INTO roles (id, rol_nombre) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO roles (id, rol_nombre) VALUES (2, 'ROLE_USER');
+*/
+
+
 
 /* Insertar Usuarios */
 INSERT INTO calendar.usuario VALUES (NULL, 'Tania', 'Romero', '2010/05/10','taniaromero@outlook.com', 'tromero', '0000');

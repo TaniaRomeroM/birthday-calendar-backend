@@ -1,6 +1,7 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dao.FiestaDao;
+import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,14 @@ public class FiestaController {
     @Autowired // LLama a FiestaDao, Hace directamente una inyeccion de dependencias
     private FiestaDao fiestaDao;
 
-    @GetMapping(value = "fiestas/{id}")
+   /* @GetMapping(value = "fiestas/{id}")
     public ResponseEntity<List<FiestaDTO>> getFiestasPorUsuario(@PathVariable("id") Long usuarioId) {
         return new ResponseEntity<List<FiestaDTO>>(fiestaDao.getFiestasPorUsuario(usuarioId), HttpStatus.OK);
+    }*/
+
+    @GetMapping(value = "fiestas/{nombreUsuario}")
+    public ResponseEntity<List<FiestaDTO>> getFiestasPorNombreUsuario(@PathVariable("nombreUsuario") String nombreUsuario) {
+        return new ResponseEntity<List<FiestaDTO>>(fiestaDao.getFiestasPorUsuario(nombreUsuario), HttpStatus.OK);
     }
 
     @GetMapping(value = "fiesta/{id}")

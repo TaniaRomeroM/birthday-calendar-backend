@@ -10,6 +10,8 @@ public interface ContactoDao {
 
     List<ContactoDTO> getContactosPorUsuario(Long usuarioId);
 
+    List<ContactoDTO> getContactosPorUsuario(String nombreUsuario);
+
     List<ContactoDTO> getContacto(Long contactoId);
 
     //void addContacto(Contacto contacto);

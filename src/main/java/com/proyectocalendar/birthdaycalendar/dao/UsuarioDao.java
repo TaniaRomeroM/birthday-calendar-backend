@@ -8,9 +8,12 @@ public interface UsuarioDao {
 
     List<UsuarioDTO> getUsuarios();
 
+    UsuarioDTO getUsuarioByNombreUsuario(String nombreUsuario);
+
     UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 
     boolean verificarCredenciales(UsuarioDTO usuarioDTO);
 
     UsuarioDTO eliminarUsuario(Long usuarioId);
+
 }

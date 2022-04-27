@@ -1,13 +1,17 @@
-package com.proyectocalendar.birthdaycalendar.dto;
+package com.proyectocalendar.birthdaycalendar.security.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
-public class UsuarioDTO {
+/* Dto para enviar el nuevo usuario */
+public class NuevoUsuario {
 
-    private Long usuarioId;
-
+    @NotBlank
     private String nombre;
 
     private String apellido;
@@ -15,19 +19,17 @@ public class UsuarioDTO {
     @JsonFormat(pattern="dd/MM/yyyy")
     private LocalDate fechanac;
 
+    @Email
     private String email;
 
+    @NotBlank
     private String nombreUsuario;
 
+    @NotBlank
     private String password;
 
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    // Se usa Set<String> porque es de tipo json y facilita el intercambio con el front
+    private Set<String> roles = new HashSet<>();
 
     public String getNombre() {
         return nombre;
@@ -77,16 +79,11 @@ public class UsuarioDTO {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "UsuarioDTO{" +
-                "usuarioId=" + usuarioId +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", fechanac=" + fechanac +
-                ", email='" + email + '\'' +
-                ", nombreUsuario='" + nombreUsuario + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 }

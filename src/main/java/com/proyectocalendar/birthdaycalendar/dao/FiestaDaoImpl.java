@@ -1,5 +1,6 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
+import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.FiestaMapper;
 import com.proyectocalendar.birthdaycalendar.models.Fiesta;
@@ -13,7 +14,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-@Transactional
+@Transactional // Mantiene coherencia si hay varios accesos a bd. Si uno falla, se hace rollback y se queda como estaba
 public class FiestaDaoImpl implements FiestaDao {
 
     @PersistenceContext
@@ -26,6 +27,14 @@ public class FiestaDaoImpl implements FiestaDao {
     public List<FiestaDTO> getFiestasPorUsuario(Long usuarioId) {
         Query query = entityManager.createQuery("SELECT f FROM Fiesta f WHERE f.usuarioId =:usuarioid");
         query.setParameter("usuarioid", usuarioId);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<FiestaDTO> getFiestasPorUsuario(String nombreUsuario) {
+        Query query = entityManager.createQuery("SELECT f FROM Fiesta f INNER JOIN Usuario u ON f.usuarioId = u.usuarioId" +
+                " WHERE u.nombreUsuario =:nombreUsuario"); // Nombre de la clase no de la tabla
+        query.setParameter("nombreUsuario", nombreUsuario);
         return query.getResultList();
     }
 

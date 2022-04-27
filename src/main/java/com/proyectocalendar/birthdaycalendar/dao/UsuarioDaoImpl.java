@@ -3,18 +3,17 @@ package com.proyectocalendar.birthdaycalendar.dao;
 import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.UsuarioMapper;
 import com.proyectocalendar.birthdaycalendar.models.Usuario;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository // Hace referencia a la conexion con la BBDD
-@Transactional // Min 2:05:44 Da funcionalidad a la clase para poder armar las consultas de SQL a la BBDD, Permite prescindir de crear la transaccion, hacer el commit, el begin, el rollback ...
+@Transactional // Mantiene coherencia si hay varios accesos a bd. Si uno falla, se hace rollback y se queda como estaba
 public class UsuarioDaoImpl implements UsuarioDao {
 
     @PersistenceContext
@@ -31,6 +30,17 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public UsuarioDTO getUsuarioByNombreUsuario(String nombreUsuario) {
+        Query query = entityManager.createQuery("FROM Usuario u Where u.nombreUsuario  =:nombreUsuario");
+        query.setParameter("nombreUsuario", nombreUsuario);
+        //return entityManager.createQuery(query).getResultList();
+        /*Usuario usuario = (Usuario) query.getResultList().get(0);
+        return usuarioMapper.toUsuarioDto(usuario);*/
+
+        return usuarioMapper.toUsuarioDto((Usuario) query.getResultList().get(0));
+    }
+
+    @Override
     public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);
         Usuario newUsuario = entityManager.merge(usuario);
@@ -40,6 +50,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public boolean verificarCredenciales(UsuarioDTO usuarioDTO) { return false; }
+
+    /*@Override
     public boolean verificarCredenciales(UsuarioDTO usuarioDTO) {
         String query = "FROM Usuario WHERE email = :email";
         List<Usuario> lista = entityManager.createQuery(query)
@@ -53,7 +66,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
         String passwordHashed = lista.get(0).getPassword();
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
         return  argon2.verify(passwordHashed, usuarioDTO.getPassword()); // Compara la contrasenya de la BBDD con la que le estamos pasando
-    }
+    }*/
 
     @Override
     public UsuarioDTO eliminarUsuario(Long usuarioId) {

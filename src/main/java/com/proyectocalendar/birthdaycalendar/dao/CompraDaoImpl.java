@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-@Transactional
+@Transactional // Mantiene coherencia si hay varios accesos a bd. Si uno falla, se hace rollback y se queda como estaba
 public class CompraDaoImpl implements CompraDao {
 
     @PersistenceContext
