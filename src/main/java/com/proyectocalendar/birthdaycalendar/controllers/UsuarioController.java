@@ -13,7 +13,7 @@ import java.util.List;
 @CrossOrigin({"*"})
 public class UsuarioController {
 
-    @Autowired // LLama al UsuarioDao, Hace directamente una inyeccion de dependencias - min 2:20:00
+    @Autowired // LLama al UsuarioDao, Hace directamente una inyeccion de dependencias
     private UsuarioDao usuarioDao;
 
     @GetMapping(value = "usuarios")
@@ -24,6 +24,11 @@ public class UsuarioController {
     @GetMapping(value = "usuarios/find/{nombreUsuario}")
     public ResponseEntity<UsuarioDTO> getUsuarioByNombreUsuario(@PathVariable("nombreUsuario") String nombreUsuario) {
         return new ResponseEntity<UsuarioDTO>(usuarioDao.getUsuarioByNombreUsuario(nombreUsuario), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "usuarios/editar")
+    public ResponseEntity<UsuarioDTO> editarUsuario (@RequestBody UsuarioDTO usuarioDTO) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
+        return new ResponseEntity<UsuarioDTO>(usuarioDao.editarUsuario(usuarioDTO), HttpStatus.OK);
     }
 
     /*@PostMapping(value = "usuarios/add")

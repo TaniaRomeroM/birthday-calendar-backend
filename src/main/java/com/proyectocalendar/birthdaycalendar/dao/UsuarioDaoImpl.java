@@ -1,7 +1,11 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
+import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
+import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.UsuarioMapper;
+import com.proyectocalendar.birthdaycalendar.models.Contacto;
+import com.proyectocalendar.birthdaycalendar.models.Fiesta;
 import com.proyectocalendar.birthdaycalendar.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,11 +45,18 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);
+        Usuario newUsuario = entityManager.merge(usuario);
+        return usuarioMapper.toUsuarioDto(newUsuario);
+        //return usuarioMapper.toUsuarioDto(entityManager.merge(usuarioMapper.toEntUsuario(usuarioDTO)));
+    }
+
+    @Override
     public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);
         Usuario newUsuario = entityManager.merge(usuario);
         return usuarioMapper.toUsuarioDto(newUsuario);
-
         //return usuarioMapper.toUsuarioDto(entityManager.merge(usuarioMapper.toEntUsuario(usuarioDTO)));
     }
 

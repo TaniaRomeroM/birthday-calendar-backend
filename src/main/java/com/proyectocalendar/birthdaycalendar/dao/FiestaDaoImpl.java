@@ -48,8 +48,8 @@ public class FiestaDaoImpl implements FiestaDao {
     @Override
     public FiestaDTO addFiesta(FiestaDTO fiestaDTO) {
         Fiesta fiesta = fiestaMapper.toEntFiesta(fiestaDTO);
-        Fiesta nwFiesta = entityManager.merge(fiesta);
-        return fiestaMapper.toFiestaDto(nwFiesta);
+        Fiesta newFiesta = entityManager.merge(fiesta);
+        return fiestaMapper.toFiestaDto(newFiesta);
         //return fiestaMapper.toFiestaDto(entityManager.merge(fiestaMapper.toEntFiesta(fiestaDTO)));
     }
 

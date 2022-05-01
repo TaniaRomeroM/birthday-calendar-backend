@@ -12,6 +12,8 @@ public interface UsuarioDao {
 
     UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 
+    UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO);
+
     boolean verificarCredenciales(UsuarioDTO usuarioDTO);
 
     UsuarioDTO eliminarUsuario(Long usuarioId);
