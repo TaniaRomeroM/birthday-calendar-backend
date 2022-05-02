@@ -2,7 +2,7 @@ package com.proyectocalendar.birthdaycalendar.dao;
 
 import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.ContactoMapper;
-import com.proyectocalendar.birthdaycalendar.models.Contacto;
+import com.proyectocalendar.birthdaycalendar.security.models.Contacto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

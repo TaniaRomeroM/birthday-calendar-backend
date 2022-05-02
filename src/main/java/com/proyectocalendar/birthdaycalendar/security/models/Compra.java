@@ -1,4 +1,4 @@
-package com.proyectocalendar.birthdaycalendar.models;
+package com.proyectocalendar.birthdaycalendar.security.models;
 
 import javax.persistence.*;
 

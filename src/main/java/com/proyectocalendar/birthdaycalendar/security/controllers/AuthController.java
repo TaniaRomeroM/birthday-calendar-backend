@@ -1,7 +1,7 @@
 package com.proyectocalendar.birthdaycalendar.security.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dto.Message;
-import com.proyectocalendar.birthdaycalendar.models.Usuario;
+import com.proyectocalendar.birthdaycalendar.security.models.Usuario;
 import com.proyectocalendar.birthdaycalendar.security.dto.JwtDTO;
 import com.proyectocalendar.birthdaycalendar.security.dto.LoginUsuario;
 import com.proyectocalendar.birthdaycalendar.security.dto.NuevoUsuario;

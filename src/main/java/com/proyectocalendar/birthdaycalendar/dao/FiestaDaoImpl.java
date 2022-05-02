@@ -1,9 +1,8 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
-import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.FiestaMapper;
-import com.proyectocalendar.birthdaycalendar.models.Fiesta;
+import com.proyectocalendar.birthdaycalendar.security.models.Fiesta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

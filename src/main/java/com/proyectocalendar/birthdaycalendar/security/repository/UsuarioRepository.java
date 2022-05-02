@@ -1,6 +1,6 @@
 package com.proyectocalendar.birthdaycalendar.security.repository;
 
-import com.proyectocalendar.birthdaycalendar.models.Usuario;
+import com.proyectocalendar.birthdaycalendar.security.models.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

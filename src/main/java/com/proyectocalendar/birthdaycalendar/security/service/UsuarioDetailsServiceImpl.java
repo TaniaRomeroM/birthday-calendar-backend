@@ -1,6 +1,6 @@
 package com.proyectocalendar.birthdaycalendar.security.service;
 
-import com.proyectocalendar.birthdaycalendar.models.Usuario;
+import com.proyectocalendar.birthdaycalendar.security.models.Usuario;
 import com.proyectocalendar.birthdaycalendar.security.models.UsuarioAplicacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

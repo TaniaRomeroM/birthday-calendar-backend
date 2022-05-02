@@ -1,6 +1,5 @@
 package com.proyectocalendar.birthdaycalendar.dao;
 
-import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 import com.proyectocalendar.birthdaycalendar.dto.FiestaDTO;
 
 import java.util.List;

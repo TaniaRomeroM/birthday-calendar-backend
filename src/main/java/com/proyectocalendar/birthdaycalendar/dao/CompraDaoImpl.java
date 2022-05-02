@@ -2,7 +2,7 @@ package com.proyectocalendar.birthdaycalendar.dao;
 
 import com.proyectocalendar.birthdaycalendar.dto.CompraDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.CompraMapper;
-import com.proyectocalendar.birthdaycalendar.models.Compra;
+import com.proyectocalendar.birthdaycalendar.security.models.Compra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -60,8 +60,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll() // cualquiera tiene acceso a la autenticacion
-                //.anyRequest().authenticated() //para el resto de peticiones hay que estar autenticado
-                .anyRequest().permitAll() //cambiar por authenticated para probar sin tener que autenticarse
+                .anyRequest().authenticated() //para el resto de peticiones hay que estar autenticado
+                //.anyRequest().permitAll() //cambiar por authenticated para probar sin tener que autenticarse
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()

@@ -1,7 +1,6 @@
 package com.proyectocalendar.birthdaycalendar.security.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proyectocalendar.birthdaycalendar.models.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

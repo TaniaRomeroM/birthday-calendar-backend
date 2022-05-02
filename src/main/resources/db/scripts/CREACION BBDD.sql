@@ -63,6 +63,7 @@ sugerencia_id BIGINT NOT NULL AUTO_INCREMENT,
 usuario_id BIGINT NOT NULL, /*Clave Ajena*/
 nombre VARCHAR(40) NOT NULL,
 descripcion VARCHAR(255) NOT NULL,
+estado VARCHAR(40) NOT NULL,
 PRIMARY KEY (sugerencia_id),
 CONSTRAINT sugerencia_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) engine=innodb;
