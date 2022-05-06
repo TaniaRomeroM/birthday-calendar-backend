@@ -10,6 +10,8 @@ public interface UsuarioDao {
 
     UsuarioDTO getUsuarioByNombreUsuario(String nombreUsuario);
 
+    List<UsuarioDTO> getUsuarioById (Long usuarioId);
+
     UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 
     UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO);

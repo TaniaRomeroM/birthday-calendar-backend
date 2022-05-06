@@ -5,6 +5,7 @@ import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,12 @@ public class UsuarioController {
     @GetMapping(value = "usuarios/find/{nombreUsuario}")
     public ResponseEntity<UsuarioDTO> getUsuarioByNombreUsuario(@PathVariable("nombreUsuario") String nombreUsuario) {
         return new ResponseEntity<UsuarioDTO>(usuarioDao.getUsuarioByNombreUsuario(nombreUsuario), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')") // Para que solo pueda hacer esta peticion el admin
+    @GetMapping(value = "usuario/find/{id}")
+    public ResponseEntity<List<UsuarioDTO>> getUsuarioById(@PathVariable("id") Long usuarioId) {
+        return new ResponseEntity<List<UsuarioDTO>>(usuarioDao.getUsuarioById(usuarioId), HttpStatus.OK);
     }
 
     @PostMapping(value = "usuarios/editar")

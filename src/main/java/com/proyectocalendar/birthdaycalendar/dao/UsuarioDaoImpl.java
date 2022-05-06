@@ -41,6 +41,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public List<UsuarioDTO> getUsuarioById(Long usuarioId) {
+        Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.usuarioId =:usuarioid");
+        query.setParameter("usuarioid", usuarioId);
+        return query.getResultList();
+    }
+
+    @Override
     public UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);
         Usuario newUsuario = entityManager.merge(usuario);
