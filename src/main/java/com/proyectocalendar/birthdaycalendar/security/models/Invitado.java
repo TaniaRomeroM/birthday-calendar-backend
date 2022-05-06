@@ -3,13 +3,13 @@ package com.proyectocalendar.birthdaycalendar.security.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "fiestacompra")
-public class Compra {
+@Table(name = "fiestainvitado")
+public class Invitado {
 
     @Id // Para mapear la clave primaria
-    @Column(name = "fcompra_id")
+    @Column(name = "finvitado_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long compraId;
+    private Long invitadoId;
 
     @Column(name = "fiesta_id")
     private Long fiestaId;
@@ -17,12 +17,12 @@ public class Compra {
     @Column(name = "nombre")
     private String nombre;
 
-    public Long getCompraId() {
-        return compraId;
+    public Long getInvitadoId() {
+        return invitadoId;
     }
 
-    public void setCompraId(Long compraId) {
-        this.compraId = compraId;
+    public void setInvitadoId(Long invitadoId) {
+        this.invitadoId = invitadoId;
     }
 
     public Long getFiestaId() {

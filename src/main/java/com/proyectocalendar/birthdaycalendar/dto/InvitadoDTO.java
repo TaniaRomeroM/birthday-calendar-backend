@@ -1,17 +1,17 @@
 package com.proyectocalendar.birthdaycalendar.dto;
 
-public class CompraDTO {
+public class InvitadoDTO {
 
-    private Long compraId;
+    private Long invitadoId;
     private Long fiestaId;
     private String nombre;
 
-    public Long getCompraId() {
-        return compraId;
+    public Long getInvitadoId() {
+        return invitadoId;
     }
 
-    public void setCompraId(Long compraId) {
-        this.compraId = compraId;
+    public void setInvitadoId(Long invitadoId) {
+        this.invitadoId = invitadoId;
     }
 
     public Long getFiestaId() {
@@ -32,8 +32,8 @@ public class CompraDTO {
 
     @Override
     public String toString() {
-        return "CompraDTO{" +
-                "compraId=" + compraId +
+        return "InvitadoDTO{" +
+                "invitadoId=" + invitadoId +
                 ", fiestaId=" + fiestaId +
                 ", nombre='" + nombre + '\'' +
                 '}';

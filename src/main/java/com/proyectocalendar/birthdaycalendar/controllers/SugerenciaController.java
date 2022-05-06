@@ -5,7 +5,6 @@ import com.proyectocalendar.birthdaycalendar.dto.SugerenciaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class SugerenciaController {
     @Autowired // LLama a SugerenciaDao, Hace directamente una inyeccion de dependencias
     private SugerenciaDao sugerenciaDao;
 
-    @PreAuthorize("hasRole('ADMIN')") // Para que solo pueda hacer esta peticion el admin
+    //@PreAuthorize("hasRole('ADMIN')") // Para que solo pueda hacer esta peticion el admin
     @GetMapping(value = "sugerencias")
     public ResponseEntity<List<SugerenciaDTO>> getSugerencias() {
         return new ResponseEntity<List<SugerenciaDTO>>(sugerenciaDao.getSugerencias(), HttpStatus.OK);
