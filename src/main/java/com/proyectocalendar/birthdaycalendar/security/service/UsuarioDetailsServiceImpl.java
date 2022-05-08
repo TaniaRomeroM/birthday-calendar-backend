@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 public class UsuarioDetailsServiceImpl implements UserDetailsService { // Implementa la interface de springSecurity
 
     @Autowired
-    UsuarioService usuarioService;
+    UserSecurityService userSecurityService;
 
     @Override
     public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
         // El .get se usa para devolver el usuario, ya que el metodo devuelve un Optional<Usuario>. Funcionan asi los Optional
-        Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
+        Usuario usuario = userSecurityService.getByNombreUsuario(nombreUsuario).get();
         return UsuarioAplicacion.build(usuario);
     }
 }

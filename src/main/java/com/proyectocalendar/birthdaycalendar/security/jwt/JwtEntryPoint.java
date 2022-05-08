@@ -16,7 +16,7 @@ import java.io.IOException;
 public class JwtEntryPoint implements AuthenticationEntryPoint {
 
     // Se utiliza en desarrollo para ver cual es el metodo que da error
-    private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
     // El siguiente metodo es necesario al implementar AuthenticationEntryPoint
     @Override

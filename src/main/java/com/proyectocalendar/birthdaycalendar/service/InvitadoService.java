@@ -1,10 +1,10 @@
-package com.proyectocalendar.birthdaycalendar.dao;
+package com.proyectocalendar.birthdaycalendar.service;
 
 import com.proyectocalendar.birthdaycalendar.dto.InvitadoDTO;
 
 import java.util.List;
 
-public interface InvitadoDao {
+public interface InvitadoService {
 
     List<InvitadoDTO> getInvitadosPorFiesta(Long fiestaId);
 

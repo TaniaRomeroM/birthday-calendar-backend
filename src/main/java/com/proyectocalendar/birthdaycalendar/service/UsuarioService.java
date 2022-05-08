@@ -1,10 +1,10 @@
-package com.proyectocalendar.birthdaycalendar.dao;
+package com.proyectocalendar.birthdaycalendar.service;
 
 import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 
 import java.util.List;
 
-public interface UsuarioDao {
+public interface UsuarioService {
 
     List<UsuarioDTO> getUsuarios();
 
@@ -12,11 +12,11 @@ public interface UsuarioDao {
 
     List<UsuarioDTO> getUsuarioById (Long usuarioId);
 
-    UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
+    //UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 
     UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO);
 
-    boolean verificarCredenciales(UsuarioDTO usuarioDTO);
+    //boolean verificarCredenciales(UsuarioDTO usuarioDTO);
 
     UsuarioDTO eliminarUsuario(Long usuarioId);
 

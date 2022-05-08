@@ -1,10 +1,10 @@
-package com.proyectocalendar.birthdaycalendar.dao;
+package com.proyectocalendar.birthdaycalendar.service;
 
 import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
 
 import java.util.List;
 
-public interface ContactoDao {
+public interface ContactoService {
 
     List<ContactoDTO> getContactos();
 
@@ -14,7 +14,6 @@ public interface ContactoDao {
 
     List<ContactoDTO> getContacto(Long contactoId);
 
-    //void addContacto(Contacto contacto);
     ContactoDTO addContacto(ContactoDTO contactoDTO);
 
     ContactoDTO eliminarContacto(Long contactoId);

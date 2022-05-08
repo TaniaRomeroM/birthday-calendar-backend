@@ -1,4 +1,4 @@
-package com.proyectocalendar.birthdaycalendar.security.models;
+package com.proyectocalendar.birthdaycalendar.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

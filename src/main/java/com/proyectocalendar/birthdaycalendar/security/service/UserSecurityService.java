@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @Transactional // Mantiene coherencia si hay varios accesos a bd. Si uno falla, se hace rollback y se queda como estaba
-public class UsuarioService {
+public class UserSecurityService {
 
     @Autowired
     UsuarioRepository usuarioRepository;

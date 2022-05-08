@@ -19,7 +19,7 @@ import java.io.IOException;
    y si lo es, permite el acceso al recurso */
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-    private final static Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(JwtTokenFilter.class);
 
     @Autowired
     JwtProvider jwtProvider;
@@ -45,7 +45,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(passwordAuthenticationToken);
             }
         } catch (Exception e) {
-            logger.error("Fallo en el doFilter" + e.getMessage());
+            log.error("Fallo en el doFilter {}", e.getMessage());
         }
 
         filterChain.doFilter(request, response);

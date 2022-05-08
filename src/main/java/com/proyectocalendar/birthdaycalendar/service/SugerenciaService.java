@@ -1,10 +1,10 @@
-package com.proyectocalendar.birthdaycalendar.dao;
+package com.proyectocalendar.birthdaycalendar.service;
 
 import com.proyectocalendar.birthdaycalendar.dto.SugerenciaDTO;
 
 import java.util.List;
 
-public interface SugerenciaDao {
+public interface SugerenciaService {
 
     List<SugerenciaDTO> getSugerencias();
 

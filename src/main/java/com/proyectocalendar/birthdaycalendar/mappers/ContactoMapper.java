@@ -1,7 +1,7 @@
 package com.proyectocalendar.birthdaycalendar.mappers;
 
 import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
-import com.proyectocalendar.birthdaycalendar.security.models.Contacto;
+import com.proyectocalendar.birthdaycalendar.models.Contacto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring") // Para poder instanciar el mapper con Autowired

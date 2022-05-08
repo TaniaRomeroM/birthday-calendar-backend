@@ -1,10 +1,10 @@
-package com.proyectocalendar.birthdaycalendar.dao;
+package com.proyectocalendar.birthdaycalendar.service;
 
 import com.proyectocalendar.birthdaycalendar.dto.CompraDTO;
 
 import java.util.List;
 
-public interface CompraDao {
+public interface CompraService {
 
     List<CompraDTO> getComprasPorFiesta(Long fiestaId);
 
