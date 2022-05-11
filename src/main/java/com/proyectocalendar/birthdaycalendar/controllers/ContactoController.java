@@ -33,6 +33,11 @@ public class ContactoController {
         return new ResponseEntity<List<ContactoDTO>>(contactoService.getContactosPorUsuario(nombreUsuario), HttpStatus.OK);
     }
 
+    @GetMapping(value = "contactos/hoy/{nombreUsuario}")
+    public ResponseEntity<List<ContactoDTO>> getContactosHoy(@PathVariable("nombreUsuario") String nombreUsuario) {
+        return new ResponseEntity<List<ContactoDTO>>(contactoService.getContactosHoy(nombreUsuario), HttpStatus.OK);
+    }
+
     @GetMapping(value = "contacto/{id}")
     public ResponseEntity<List<ContactoDTO>> getContacto(@PathVariable("id") Long contactoId) {
         return new ResponseEntity<List<ContactoDTO>>(contactoService.getContacto(contactoId), HttpStatus.OK);

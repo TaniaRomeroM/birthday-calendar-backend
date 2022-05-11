@@ -10,6 +10,8 @@ public interface ContactoService {
 
     List<ContactoDTO> getContactosPorUsuario(Long usuarioId);
 
+    List<ContactoDTO> getContactosHoy(String nombreUsuario);
+
     List<ContactoDTO> getContactosPorUsuario(String nombreUsuario);
 
     List<ContactoDTO> getContacto(Long contactoId);

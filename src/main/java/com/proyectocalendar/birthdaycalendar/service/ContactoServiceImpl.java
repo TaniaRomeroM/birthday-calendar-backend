@@ -53,6 +53,17 @@ public class ContactoServiceImpl implements ContactoService {
     }
 
     @Override
+    public List<ContactoDTO> getContactosHoy(String nombreUsuario) {
+        log.info("Fetching contacts by date: {}", nombreUsuario);
+        Query query = entityManager.createQuery("SELECT c FROM Contacto c INNER JOIN Usuario u ON c.usuarioId = u.usuarioId" +
+                " WHERE u.nombreUsuario =:nombreUsuario" +
+                " AND month(c.fechanac) = month(now())" +
+                " AND day(c.fechanac) = day(now())");
+        query.setParameter("nombreUsuario", nombreUsuario);
+        return query.getResultList();
+    };
+
+    @Override
     public List<ContactoDTO> getContacto(Long contactoId) {
         log.info("Fetching contact: {}", contactoId);
         Query query = entityManager.createQuery("SELECT c FROM Contacto c WHERE c.contactoId =:contactoid");
