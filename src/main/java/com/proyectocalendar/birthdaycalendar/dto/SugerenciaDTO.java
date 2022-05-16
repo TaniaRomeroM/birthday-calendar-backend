@@ -1,16 +1,21 @@
 package com.proyectocalendar.birthdaycalendar.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class SugerenciaDTO {
 
     private Long sugerenciaId;
 
     private Long usuarioId;
 
+    @NotBlank
     private String nombre;
 
+    @NotBlank
     private String descripcion;
 
-    private String estadoSugerencia;  /* ¿ ENUM ? */
+    @NotBlank
+    private String estadoSugerencia;
 
     public Long getSugerenciaId() {
         return sugerenciaId;

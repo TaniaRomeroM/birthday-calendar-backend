@@ -1,13 +1,16 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dto.ContactoDTO;
+import com.proyectocalendar.birthdaycalendar.dto.Message;
 import com.proyectocalendar.birthdaycalendar.service.ContactoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -44,7 +47,10 @@ public class ContactoController {
     }
 
     @PostMapping(value = "contactos/add")
-    public ResponseEntity<ContactoDTO> addContacto (@RequestBody ContactoDTO contactoDTO) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
+    public ResponseEntity<?> addContacto (@Valid @RequestBody ContactoDTO contactoDTO, BindingResult bindingResult) { // @RequestBody - Convierte el JSON que recibe a un usuario automaticamente
+        if(bindingResult.hasErrors()) {
+            return new ResponseEntity<>(new Message("Campos erróneos"), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<ContactoDTO>(contactoService.addContacto(contactoDTO), HttpStatus.CREATED);
     }
 

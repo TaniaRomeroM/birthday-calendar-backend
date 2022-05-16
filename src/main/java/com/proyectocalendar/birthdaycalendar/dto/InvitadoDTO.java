@@ -1,9 +1,14 @@
 package com.proyectocalendar.birthdaycalendar.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class InvitadoDTO {
 
     private Long invitadoId;
+
     private Long fiestaId;
+
+    @NotBlank
     private String nombre;
 
     public Long getInvitadoId() {

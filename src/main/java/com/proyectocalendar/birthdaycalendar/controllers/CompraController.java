@@ -1,12 +1,15 @@
 package com.proyectocalendar.birthdaycalendar.controllers;
 
 import com.proyectocalendar.birthdaycalendar.dto.CompraDTO;
+import com.proyectocalendar.birthdaycalendar.dto.Message;
 import com.proyectocalendar.birthdaycalendar.service.CompraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +26,10 @@ public class CompraController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity<CompraDTO> addCompra (@RequestBody CompraDTO compraDTO) {
+    public ResponseEntity<?> addCompra (@Valid @RequestBody CompraDTO compraDTO, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return new ResponseEntity<>(new Message("Campos erróneos"), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<CompraDTO>(compraService.addCompra(compraDTO), HttpStatus.CREATED);
     }
 

@@ -49,15 +49,6 @@ PRIMARY KEY (fcompra_id),
 CONSTRAINT fiestacompra_fiestaFK FOREIGN KEY (fiesta_id) REFERENCES fiesta (fiesta_id) ON DELETE CASCADE
 ) engine=innodb;
 
-CREATE TABLE IF NOT EXISTS calendar.notificacion (
-notificacion_id BIGINT NOT NULL AUTO_INCREMENT,
-usuario_id BIGINT NOT NULL, /*Clave Ajena*/
-nombre VARCHAR(40) NOT NULL,
-descripcion VARCHAR(255) NOT NULL,
-PRIMARY KEY (notificacion_id),
-CONSTRAINT notificacion_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
-) engine=innodb;
-
 CREATE TABLE IF NOT EXISTS calendar.sugerencia (
 sugerencia_id BIGINT NOT NULL AUTO_INCREMENT,
 usuario_id BIGINT NOT NULL, /*Clave Ajena*/
@@ -68,8 +59,6 @@ PRIMARY KEY (sugerencia_id),
 CONSTRAINT sugerencia_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id) ON DELETE CASCADE
 ) engine=innodb;
 
-
-/*
 CREATE TABLE IF NOT EXISTS calendar.roles (
 id BIGINT NOT NULL AUTO_INCREMENT,
 rol_nombre VARCHAR(40) NOT NULL,
@@ -83,9 +72,11 @@ CONSTRAINT usuariorol_usuarioFK FOREIGN KEY (usuario_id) REFERENCES usuario (usu
 CONSTRAINT usuariorol_rolesFK FOREIGN KEY (rol_id) REFERENCES roles (id)
 ) engine=INNODB;
 
-INSERT INTO roles (id, rol_nombre) VALUES (1, 'ROLE_ADMIN');
-INSERT INTO roles (id, rol_nombre) VALUES (2, 'ROLE_USER');
-*/
+INSERT INTO calendar.roles (id, rol_nombre) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO calendar.roles (id, rol_nombre) VALUES (2, 'ROLE_USER');
+/*INSERT INTO calendar.usuario VALUES (NULL, 'admin', 'admin', '2010/05/10','admin@admin.com', 'admin', 'admin');*/
+INSERT INTO calendar.usuario_rol (rol_id, usuario_id) VALUES (1, 1);
+INSERT INTO calendar.usuario_rol (rol_id, usuario_id) VALUES (2, 1);
 
 
 

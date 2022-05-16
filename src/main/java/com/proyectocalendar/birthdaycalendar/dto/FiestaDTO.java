@@ -2,12 +2,14 @@ package com.proyectocalendar.birthdaycalendar.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class FiestaDTO {
 
     private Long fiestaId;
 
+    @NotNull
     private Long contactoId;
 
     private Long usuarioId;

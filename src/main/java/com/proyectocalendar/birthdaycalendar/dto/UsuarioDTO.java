@@ -2,23 +2,32 @@ package com.proyectocalendar.birthdaycalendar.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class UsuarioDTO {
 
     private Long usuarioId;
 
+    @NotBlank
     private String nombre;
 
     private String apellido;
 
+    @NotNull
     @JsonFormat(pattern="dd/MM/yyyy")
     private LocalDate fechanac;
 
+    @NotBlank
+    @Email
     private String email;
 
+    @NotBlank
     private String nombreUsuario;
 
+    @NotBlank
     private String password;
 
     public Long getUsuarioId() {

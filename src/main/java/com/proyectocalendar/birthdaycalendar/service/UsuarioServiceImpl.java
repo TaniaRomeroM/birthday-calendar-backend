@@ -2,7 +2,10 @@ package com.proyectocalendar.birthdaycalendar.service;
 
 import com.proyectocalendar.birthdaycalendar.dto.UsuarioDTO;
 import com.proyectocalendar.birthdaycalendar.mappers.UsuarioMapper;
+import com.proyectocalendar.birthdaycalendar.security.enums.RolNombre;
+import com.proyectocalendar.birthdaycalendar.security.models.Rol;
 import com.proyectocalendar.birthdaycalendar.security.models.Usuario;
+import com.proyectocalendar.birthdaycalendar.security.service.RolService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Repository // Hace referencia a la conexion con la BBDD
 @Transactional // Mantiene coherencia si hay varios accesos a bd. Si uno falla, se hace rollback y se queda como estaba
@@ -25,6 +31,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     UsuarioMapper usuarioMapper;
+
+    @Autowired
+    RolService rolService;
 
     @Override // Indica que esta reemplazando el metodo de la Interface
     @Transactional
@@ -50,6 +59,15 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);
+
+        Set<Rol> roles = new HashSet<>();
+        Optional<Rol> optionalRol = rolService.getByRolNombre(RolNombre.ROLE_USER);
+        if (optionalRol.isPresent()) {
+            roles.add(optionalRol.get()); //el .get se usa para devolver el rol, ya que el metodo devuelve un Optional<Rol>
+        }
+        // se agrega el ROLE_USER al usuario
+        usuario.setRoles(roles);
+
         Usuario newUsuario = entityManager.merge(usuario);
         return usuarioMapper.toUsuarioDto(newUsuario);
     }
