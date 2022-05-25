@@ -6,13 +6,9 @@ import java.util.List;
 
 public interface ContactoService {
 
-    List<ContactoDTO> getContactos();
-
-    List<ContactoDTO> getContactosPorUsuario(Long usuarioId);
+    List<ContactoDTO> getContactosPorUsuario(String nombreUsuario);
 
     List<ContactoDTO> getContactosHoy(String nombreUsuario);
-
-    List<ContactoDTO> getContactosPorUsuario(String nombreUsuario);
 
     List<ContactoDTO> getContacto(Long contactoId);
 

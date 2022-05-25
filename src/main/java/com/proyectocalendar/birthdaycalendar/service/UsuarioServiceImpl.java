@@ -16,7 +16,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,13 +33,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     RolService rolService;
-
+    /*
     @Override // Indica que esta reemplazando el metodo de la Interface
     @Transactional
     public List<UsuarioDTO> getUsuarios() {
         String query = "FROM Usuario"; // Nombre de la clase no de la tabla
         return entityManager.createQuery(query).getResultList();
-    }
+    }*/
 
     @Override
     public UsuarioDTO getUsuarioByNombreUsuario(String nombreUsuario) {
@@ -48,14 +47,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         query.setParameter("nombreUsuario", nombreUsuario);
         return usuarioMapper.toUsuarioDto((Usuario) query.getResultList().get(0));
     }
-
+/*
     @Override
     public List<UsuarioDTO> getUsuarioById(Long usuarioId) {
         Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.usuarioId =:usuarioid");
         query.setParameter("usuarioid", usuarioId);
         return query.getResultList();
     }
-
+*/
     @Override
     public UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);

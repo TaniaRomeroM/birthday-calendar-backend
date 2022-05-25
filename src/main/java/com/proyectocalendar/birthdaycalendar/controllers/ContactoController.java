@@ -6,7 +6,6 @@ import com.proyectocalendar.birthdaycalendar.service.ContactoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,19 +16,8 @@ import java.util.List;
 @CrossOrigin({"*"})
 public class ContactoController {
 
-    @Autowired // LLama al ContactoDao, Hace directamente una inyeccion de dependencias - min 2:20:00
+    @Autowired // LLama al ContactoDao, Hace directamente una inyeccion de dependencias
     private ContactoService contactoService;
-
-    @PreAuthorize("hasRole('ADMIN')") // Para que solo pueda hacer esta peticion el admin
-    @GetMapping(value = "contactos")
-    public ResponseEntity<List<ContactoDTO>> getContactos() {
-        return new ResponseEntity<List<ContactoDTO>>(contactoService.getContactos(), HttpStatus.OK);
-    }
-
-    /*@GetMapping(value = "contactos/{id}")
-    public ResponseEntity<List<ContactoDTO>> getContactosPorUsuario(@PathVariable("id") Long usuarioId) {
-        return new ResponseEntity<List<ContactoDTO>>(contactoDao.getContactosPorUsuario(usuarioId), HttpStatus.OK);
-    }*/
 
     @GetMapping(value = "contactos/{nombreUsuario}")
     public ResponseEntity<List<ContactoDTO>> getContactosPorNombreUsuario(@PathVariable("nombreUsuario") String nombreUsuario) {

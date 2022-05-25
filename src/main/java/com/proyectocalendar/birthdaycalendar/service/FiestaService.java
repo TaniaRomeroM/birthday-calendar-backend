@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface FiestaService {
 
-    List<FiestaDTO> getFiestasPorUsuario(Long fiestaId);
-
     List<FiestaDTO> getFiestasPorUsuario(String nombreUsuario);
 
     List<FiestaDTO> getFiesta(Long fiestaId);

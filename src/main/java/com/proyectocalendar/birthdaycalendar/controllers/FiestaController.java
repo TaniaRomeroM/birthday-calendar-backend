@@ -19,11 +19,6 @@ public class FiestaController {
     @Autowired // LLama a FiestaDao, Hace directamente una inyeccion de dependencias
     private FiestaService fiestaService;
 
-   /* @GetMapping(value = "fiestas/{id}")
-    public ResponseEntity<List<FiestaDTO>> getFiestasPorUsuario(@PathVariable("id") Long usuarioId) {
-        return new ResponseEntity<List<FiestaDTO>>(fiestaDao.getFiestasPorUsuario(usuarioId), HttpStatus.OK);
-    }*/
-
     @GetMapping(value = "fiestas/{nombreUsuario}")
     public ResponseEntity<List<FiestaDTO>> getFiestasPorNombreUsuario(@PathVariable("nombreUsuario") String nombreUsuario) {
         return new ResponseEntity<List<FiestaDTO>>(fiestaService.getFiestasPorUsuario(nombreUsuario), HttpStatus.OK);

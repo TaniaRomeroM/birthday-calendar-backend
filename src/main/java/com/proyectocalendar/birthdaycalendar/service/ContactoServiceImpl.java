@@ -26,23 +26,6 @@ public class ContactoServiceImpl implements ContactoService {
     @Autowired
     ContactoMapper contactoMapper;
 
-    @Override // Indica que esta reemplazando el metodo de la Interface
-    @Transactional
-    public List<ContactoDTO> getContactos() {
-        log.info("Fetching all contacts");
-        String query = "FROM Contacto"; // Nombre de la clase no de la tabla
-        //List<Contacto> contactos = entityManager.createQuery(query).getResultList()
-        return entityManager.createQuery(query).getResultList();
-    }
-
-    @Override
-    public List<ContactoDTO> getContactosPorUsuario(Long usuarioId) {
-        log.info("Getting contacts by usuarioId: {}", usuarioId);
-        Query query = entityManager.createQuery("SELECT c FROM Contacto c WHERE c.usuarioId =:usuarioid"); // Nombre de la clase no de la tabla
-        query.setParameter("usuarioid", usuarioId);
-        return query.getResultList();
-    }
-
     @Override
     public List<ContactoDTO> getContactosPorUsuario(String nombreUsuario) {
         log.info("Fetching contacts by nombreUsuario: {}", nombreUsuario);

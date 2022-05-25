@@ -27,14 +27,6 @@ public class FiestaServiceImpl implements FiestaService {
     FiestaMapper fiestaMapper;
 
     @Override
-    public List<FiestaDTO> getFiestasPorUsuario(Long usuarioId) {
-        log.info("Fetching fiestas by usuarioId: {}", usuarioId);
-        Query query = entityManager.createQuery("SELECT f FROM Fiesta f WHERE f.usuarioId =:usuarioid");
-        query.setParameter("usuarioid", usuarioId);
-        return query.getResultList();
-    }
-
-    @Override
     public List<FiestaDTO> getFiestasPorUsuario(String nombreUsuario) {
         log.info("Fetching fiestas by nombreUsuario: {}", nombreUsuario);
         Query query = entityManager.createQuery("SELECT f FROM Fiesta f INNER JOIN Usuario u ON f.usuarioId = u.usuarioId" +
