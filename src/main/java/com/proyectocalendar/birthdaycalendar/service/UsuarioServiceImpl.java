@@ -16,6 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -47,14 +48,14 @@ public class UsuarioServiceImpl implements UsuarioService {
         query.setParameter("nombreUsuario", nombreUsuario);
         return usuarioMapper.toUsuarioDto((Usuario) query.getResultList().get(0));
     }
-/*
+
     @Override
     public List<UsuarioDTO> getUsuarioById(Long usuarioId) {
         Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.usuarioId =:usuarioid");
         query.setParameter("usuarioid", usuarioId);
         return query.getResultList();
     }
-*/
+
     @Override
     public UsuarioDTO editarUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntUsuario(usuarioDTO);
@@ -71,10 +72,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioMapper.toUsuarioDto(newUsuario);
     }
 
-    @Override
+    /*@Override
     public UsuarioDTO eliminarUsuario(Long usuarioId) {
         Usuario usuario = entityManager.find(Usuario.class, usuarioId);
         entityManager.remove(usuario);
         return usuarioMapper.toUsuarioDto(usuario);
-    }
+    }*/
 }

@@ -7,10 +7,12 @@ import com.proyectocalendar.birthdaycalendar.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @CrossOrigin({"*"})
@@ -27,6 +29,12 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDTO>> getUsuarios() {
         return new ResponseEntity<List<UsuarioDTO>>(usuarioService.getUsuarios(), HttpStatus.OK);
     }*/
+
+    @PreAuthorize("hasRole('ADMIN')") // Para que solo pueda hacer esta peticion el admin
+    @GetMapping(value = "usuario/find/{id}")
+    public ResponseEntity<List<UsuarioDTO>> getUsuarioById(@PathVariable("id") Long usuarioId) {
+        return new ResponseEntity<List<UsuarioDTO>>(usuarioService.getUsuarioById(usuarioId), HttpStatus.OK);
+    }
 
     @GetMapping(value = "usuarios/find/{nombreUsuario}")
     public ResponseEntity<UsuarioDTO> getUsuarioByNombreUsuario(@PathVariable("nombreUsuario") String nombreUsuario) {
